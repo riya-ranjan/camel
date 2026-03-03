@@ -1,7 +1,0 @@
-DEBUG:done with options: dev name=</dev/cu.usbserial-10>, pi-prog=<./tests/2-one-way-ack-16bytes.bin>, trace=0
-opened tty port </dev/cu.usbserial-10>.
-DEBUG:my-install: tty-usb=</dev/cu.usbserial-10> program=<./tests/2-one-way-ack-16bytes.bin>: about to boot
-TRACE:simple_boot: sending 31700 bytes, crc32=c97ebb34
-BOOT:waiting for a start
-my-install: tty-USB read() returned 0 bytes.  r/pi not responding [reboot it?]
-Reading file: ./tests/2-one-way-ack-16bytes.bin
