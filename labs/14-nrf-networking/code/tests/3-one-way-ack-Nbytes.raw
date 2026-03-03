@@ -1,0 +1,31 @@
+DEBUG:done with options: dev name=</dev/cu.usbserial-10>, pi-prog=<./tests/3-one-way-ack-Nbytes.bin>, trace=0
+opened tty port </dev/cu.usbserial-10>.
+DEBUG:my-install: tty-usb=</dev/cu.usbserial-10> program=<./tests/3-one-way-ack-Nbytes.bin>: about to boot
+TRACE:simple_boot: sending 26660 bytes, crc32=beb72d7d
+BOOT:waiting for a start
+DEBUG:PRINT_STRING:pi sent print: <Riya Ranjan UART: success: Received the program!>
+BOOT:bootloader: Done.
+TRACE:notmain:send total=1000, 32-byte messages from server=[0xe7e7e7] to client=[0xd3d3d3]
+TRACE:one_way_ack:sent 100 ack'd packets
+TRACE:one_way_ack:sent 200 ack'd packets
+TRACE:one_way_ack:sent 300 ack'd packets
+TRACE:one_way_ack:sent 400 ack'd packets
+TRACE:one_way_ack:sent 500 ack'd packets
+TRACE:one_way_ack:sent 600 ack'd packets
+TRACE:one_way_ack:sent 700 ack'd packets
+TRACE:one_way_ack:sent 800 ack'd packets
+TRACE:one_way_ack:sent 900 ack'd packets
+TRACE:one_way_ack:trial: total successfully sent 1000 ack'd packets lost [0]
+NRF:server: done with one-way test
+NRF:	total time= [1sec:485ms:510usec]
+NRF:	total sent messages=1000
+NRF:	total sent bytes=32000 bandwidth=[21.621 kb/s]
+	total retrans=92
+NRF:client: done with one-way test
+NRF:	total time= [1sec:500ms:698usec]
+NRF:	total received messages=1000
+NRF:	total received bytes=32000 bandwidth=[21.390 kb/s]
+DONE!!!
+
+bootloader: pi exited.  cleaning up
+Reading file: ./tests/3-one-way-ack-Nbytes.bin

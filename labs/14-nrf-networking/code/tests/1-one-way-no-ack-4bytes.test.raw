@@ -1,0 +1,7 @@
+DEBUG:done with options: dev name=</dev/cu.usbserial-10>, pi-prog=<./tests/1-one-way-no-ack-4bytes.bin>, trace=0
+opened tty port </dev/cu.usbserial-10>.
+DEBUG:my-install: tty-usb=</dev/cu.usbserial-10> program=<./tests/1-one-way-no-ack-4bytes.bin>: about to boot
+TRACE:simple_boot: sending 31792 bytes, crc32=78cb6965
+BOOT:waiting for a start
+write-exact.c:write_exact:10:PANIC:expected a write of 1 bytes, got 0
+Reading file: ./tests/1-one-way-no-ack-4bytes.bin
