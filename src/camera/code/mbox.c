@@ -319,9 +319,9 @@ uint32_t rpi_clock_hz_set(uint32_t clk, uint32_t hz) {
     msg[2] = 0x00038002;  // serial tag
     msg[3] = 12;           // total bytes avail for reply
     msg[4] = 0;           // request code [0].
-    msg[5] = clk;          
-    msg[6] = hz;           // space for 2nd word of reply 
-    msg[7] = 1;   
+    msg[5] = clk;
+    msg[6] = hz;           // space for 2nd word of reply
+    msg[7] = 1;
     msg[8] = 0;   // end tag
 
     // send and receive message
@@ -342,4 +342,69 @@ uint32_t rpi_clock_hz_set(uint32_t clk, uint32_t hz) {
     assert(msg[4] == ((1<<31) | 8));
     assert(msg[5] == clk);
     return msg[6];
+}
+
+/***********************************************************************
+ * GPU memory allocation
+ */
+
+uint32_t gpu_mem_alloc(uint32_t size, uint32_t alignment, uint32_t flags) {
+    volatile uint32_t msg[9] __attribute__((aligned(16)));
+    msg[0] = 9 * 4;
+    msg[1] = 0;
+    msg[2] = MBOX_TAG_GPU_MEM_ALLOC;
+    msg[3] = 12;    // response buffer: 3 words
+    msg[4] = 0;
+    msg[5] = size;
+    msg[6] = alignment;
+    msg[7] = flags;
+    msg[8] = 0;     // end tag
+
+    mbox_send(MBOX_CH, msg);
+    return msg[5];  // handle
+}
+
+uint32_t gpu_mem_lock(uint32_t handle) {
+    volatile uint32_t msg[8] __attribute__((aligned(16)));
+    msg[0] = 8 * 4;
+    msg[1] = 0;
+    msg[2] = MBOX_TAG_GPU_MEM_LOCK;
+    msg[3] = 4;
+    msg[4] = 0;
+    msg[5] = handle;
+    msg[6] = 0;
+    msg[7] = 0;     // end tag
+
+    mbox_send(MBOX_CH, msg);
+    return msg[5];  // bus address
+}
+
+uint32_t gpu_mem_unlock(uint32_t handle) {
+    volatile uint32_t msg[8] __attribute__((aligned(16)));
+    msg[0] = 8 * 4;
+    msg[1] = 0;
+    msg[2] = MBOX_TAG_GPU_MEM_UNLOCK;
+    msg[3] = 4;
+    msg[4] = 0;
+    msg[5] = handle;
+    msg[6] = 0;
+    msg[7] = 0;     // end tag
+
+    mbox_send(MBOX_CH, msg);
+    return msg[5];  // status (0 = success)
+}
+
+uint32_t gpu_mem_free(uint32_t handle) {
+    volatile uint32_t msg[8] __attribute__((aligned(16)));
+    msg[0] = 8 * 4;
+    msg[1] = 0;
+    msg[2] = MBOX_TAG_GPU_MEM_FREE;
+    msg[3] = 4;
+    msg[4] = 0;
+    msg[5] = handle;
+    msg[6] = 0;
+    msg[7] = 0;     // end tag
+
+    mbox_send(MBOX_CH, msg);
+    return msg[5];  // status (0 = success)
 }

@@ -1,0 +1,127 @@
+/dts-v1/;
+
+/ {
+    videocore {
+        compatible = "brcm,bcm2835-firmware-gpio";
+
+        pins_bplus {
+            pin_config {
+                pin@default {
+                    polarity = "active_high";
+                    termination = "pull_down";
+                    startup_state = "inactive";
+                    function = "input";
+                };
+                pin@p14 { function = "uart0"; termination = "no_pulling"; };
+                pin@p15 { function = "uart0"; termination = "pull_up"; };
+                pin@p28 { function = "i2c0"; termination = "pull_up"; };
+                pin@p29 { function = "i2c0"; termination = "pull_up"; };
+                pin@p32 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p44 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p47 { function = "output"; termination = "pull_up"; };
+            };
+            pin_defines {
+                pin_define@HDMI_CONTROL_ATTACHED { type = "internal"; number = <0>; };
+                pin_define@EMMC_ENABLE { type = "internal"; number = <1>; };
+                pin_define@NUM_CAMERAS { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_I2C_PORT { type = "internal"; number = <0>; };
+                pin_define@CAMERA_0_SDA_PIN { type = "internal"; number = <28>; };
+                pin_define@CAMERA_0_SCL_PIN { type = "internal"; number = <29>; };
+                pin_define@CAMERA_0_SHUTDOWN { type = "internal"; number = <44>; };
+                pin_define@CAMERA_0_UNICAM_PORT { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_LED { type = "internal"; number = <0>; };
+                pin_define@CAMERA_1_LED { type = "internal"; number = <0>; };
+            };
+        };
+
+        pins_rev1 {
+            pin_config {
+                pin@default {
+                    polarity = "active_high";
+                    termination = "pull_down";
+                    startup_state = "inactive";
+                    function = "input";
+                };
+                pin@p14 { function = "uart0"; termination = "no_pulling"; };
+                pin@p15 { function = "uart0"; termination = "pull_up"; };
+                pin@p28 { function = "i2c0"; termination = "pull_up"; };
+                pin@p29 { function = "i2c0"; termination = "pull_up"; };
+                pin@p32 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p44 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p47 { function = "output"; termination = "pull_up"; };
+            };
+            pin_defines {
+                pin_define@HDMI_CONTROL_ATTACHED { type = "internal"; number = <0>; };
+                pin_define@EMMC_ENABLE { type = "internal"; number = <1>; };
+                pin_define@NUM_CAMERAS { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_I2C_PORT { type = "internal"; number = <0>; };
+                pin_define@CAMERA_0_SDA_PIN { type = "internal"; number = <28>; };
+                pin_define@CAMERA_0_SCL_PIN { type = "internal"; number = <29>; };
+                pin_define@CAMERA_0_SHUTDOWN { type = "internal"; number = <44>; };
+                pin_define@CAMERA_0_UNICAM_PORT { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_LED { type = "internal"; number = <0>; };
+                pin_define@CAMERA_1_LED { type = "internal"; number = <0>; };
+            };
+        };
+
+        pins_rev2 {
+            pin_config {
+                pin@default {
+                    polarity = "active_high";
+                    termination = "pull_down";
+                    startup_state = "inactive";
+                    function = "input";
+                };
+                pin@p14 { function = "uart0"; termination = "no_pulling"; };
+                pin@p15 { function = "uart0"; termination = "pull_up"; };
+                pin@p28 { function = "i2c0"; termination = "pull_up"; };
+                pin@p29 { function = "i2c0"; termination = "pull_up"; };
+                pin@p32 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p44 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p47 { function = "output"; termination = "pull_up"; };
+            };
+            pin_defines {
+                pin_define@HDMI_CONTROL_ATTACHED { type = "internal"; number = <0>; };
+                pin_define@EMMC_ENABLE { type = "internal"; number = <1>; };
+                pin_define@NUM_CAMERAS { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_I2C_PORT { type = "internal"; number = <0>; };
+                pin_define@CAMERA_0_SDA_PIN { type = "internal"; number = <28>; };
+                pin_define@CAMERA_0_SCL_PIN { type = "internal"; number = <29>; };
+                pin_define@CAMERA_0_SHUTDOWN { type = "internal"; number = <44>; };
+                pin_define@CAMERA_0_UNICAM_PORT { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_LED { type = "internal"; number = <0>; };
+                pin_define@CAMERA_1_LED { type = "internal"; number = <0>; };
+            };
+        };
+
+        pins_2b2 {
+            pin_config {
+                pin@default {
+                    polarity = "active_high";
+                    termination = "pull_down";
+                    startup_state = "inactive";
+                    function = "input";
+                };
+                pin@p14 { function = "uart0"; termination = "no_pulling"; };
+                pin@p15 { function = "uart0"; termination = "pull_up"; };
+                pin@p28 { function = "i2c0"; termination = "pull_up"; };
+                pin@p29 { function = "i2c0"; termination = "pull_up"; };
+                pin@p32 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p44 { function = "output"; termination = "no_pulling"; startup_state = "active"; };
+                pin@p47 { function = "output"; termination = "pull_up"; };
+            };
+            pin_defines {
+                pin_define@HDMI_CONTROL_ATTACHED { type = "internal"; number = <0>; };
+                pin_define@EMMC_ENABLE { type = "internal"; number = <1>; };
+                pin_define@NUM_CAMERAS { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_I2C_PORT { type = "internal"; number = <0>; };
+                pin_define@CAMERA_0_SDA_PIN { type = "internal"; number = <28>; };
+                pin_define@CAMERA_0_SCL_PIN { type = "internal"; number = <29>; };
+                pin_define@CAMERA_0_SHUTDOWN { type = "internal"; number = <44>; };
+                pin_define@CAMERA_0_UNICAM_PORT { type = "internal"; number = <1>; };
+                pin_define@CAMERA_0_LED { type = "internal"; number = <0>; };
+                pin_define@CAMERA_1_LED { type = "internal"; number = <0>; };
+            };
+        };
+    };
+};

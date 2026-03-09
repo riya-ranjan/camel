@@ -13,9 +13,10 @@ AS  = $(ARM)-as
 AR = $(ARM)-ar
 OD  = $(ARM)-objdump
 OCP = $(ARM)-objcopy
+# Use camel's own libpi for libpi.a, but cs140e for headers/start/memmap.
 CS140E_2026_LIBPI_PATH = $(CS140E_2026_PATH)/libpi
 LPP = $(CS140E_2026_LIBPI_PATH)
-LPI ?= $(LPP)/libpi.a
+LPI ?= $(CS140E_2026_PATH)/../camel/libpi/libpi.a
 LGCC ?= $(CS140E_2026_PATH)/lib/libgcc.a
 
 # let the client override these.

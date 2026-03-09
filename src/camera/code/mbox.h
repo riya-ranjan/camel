@@ -126,4 +126,47 @@ uint64_t rpi_get_serialnum(void);
 // get the temperature.
 uint32_t rpi_temp_get(void) ;
 
+/***********************************************************************
+ * GPU memory allocation (Phase 1)
+ *
+ * https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface
+ *   Allocate memory: 0x0003000C
+ *   Lock memory:     0x0003000D
+ *   Unlock memory:   0x0003000E
+ *   Release memory:  0x0003000F
+ */
+enum {
+    MBOX_TAG_GPU_MEM_ALLOC   = 0x0003000C,
+    MBOX_TAG_GPU_MEM_LOCK    = 0x0003000D,
+    MBOX_TAG_GPU_MEM_UNLOCK  = 0x0003000E,
+    MBOX_TAG_GPU_MEM_FREE    = 0x0003000F,
+};
+
+// GPU memory allocation flags
+enum {
+    GPU_MEM_FLAG_DISCARDABLE      = 1 << 0,
+    GPU_MEM_FLAG_NORMAL           = 0 << 2,
+    GPU_MEM_FLAG_DIRECT           = 1 << 2,
+    GPU_MEM_FLAG_COHERENT         = 2 << 2,
+    GPU_MEM_FLAG_L1_NONALLOCATING = 3 << 2,
+    GPU_MEM_FLAG_ZERO             = 1 << 4,
+    GPU_MEM_FLAG_NO_INIT          = 1 << 5,
+    GPU_MEM_FLAG_HINT_PERMALOCK   = 1 << 6,
+};
+
+// Allocate GPU memory. Returns handle (0 on failure).
+//   size: bytes to allocate
+//   alignment: alignment in bytes (e.g., 4096)
+//   flags: GPU_MEM_FLAG_* ORed together
+uint32_t gpu_mem_alloc(uint32_t size, uint32_t alignment, uint32_t flags);
+
+// Lock GPU memory, returns bus address. Handle from gpu_mem_alloc.
+uint32_t gpu_mem_lock(uint32_t handle);
+
+// Unlock GPU memory. Returns 0 on success.
+uint32_t gpu_mem_unlock(uint32_t handle);
+
+// Free GPU memory. Returns 0 on success.
+uint32_t gpu_mem_free(uint32_t handle);
+
 #endif
