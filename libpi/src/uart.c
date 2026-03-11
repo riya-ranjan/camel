@@ -144,8 +144,8 @@ void uart_init(void) {
     val |= 0b11;
     PUT32(AUX_MU_LCR, val);
     
-    // val = 270;  // 115200 baud at core_freq=250MHz
-    val = 433;     // 115200 baud at core_freq=400MHz
+    val = 270;     // 115200 baud at core_freq=250MHz
+    // val = 433;  // 115200 baud at core_freq=400MHz
     PUT32(AUX_MU_BAUD, val);
     /** enable uart */
     val = GET32(AUX_MU_CNTL);

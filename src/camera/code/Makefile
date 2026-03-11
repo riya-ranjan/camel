@@ -1,12 +1,15 @@
+# PROGS := tests/7-button-loop.c
+PROGS := tests/6-button-capture.c
 # PROGS := tests/5-test-fat32.c
-PROGS := tests/4-frame-capture.c
+# PROGS := tests/4-frame-capture.c
 # PROGS := tests/3-sensor-init.c
 # PROGS := tests/2-unicam-power.c
 # PROGS := tests/1-sensor-id.c
 # PROGS := tests/0-test-boot.c
 # PROGS := tests/test-mbox.c
 F = ../../fat32
-COMMON_SRC := mbox.c cam-power.c i2c.c imx477.c unicam.c \
+COMMON_SRC := mbox.c cam-power.c i2c.c imx477.c unicam.c frame.c \
+              interrupt-asm.S \
               $(F)/pi-sd.c $(F)/mbr.c $(F)/mbr-helpers.c \
               $(F)/fat32.c $(F)/fat32-helpers.c $(F)/fat32-lfn-helpers.c \
               $(F)/unicode-utf8.c $(F)/emmc.c

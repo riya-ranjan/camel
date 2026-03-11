@@ -2285,7 +2285,7 @@ Disassembly of section .text:
   c4:	e8bd8070 	pop	{r4, r5, r6, pc}
   c8:	20215004 	eorcs	r5, r1, r4
   cc:	20215048 	eorcs	r5, r1, r8, asr #32
-  d0:	000001b1 			; <UNDEFINED> instruction: 0x000001b1
+  d0:	0000010e 	andeq	r0, r0, lr, lsl #2
   d4:	20215068 	eorcs	r5, r1, r8, rrx
 
 000000d8 <uart_can_put8>:
@@ -3340,7 +3340,7 @@ Disassembly of section .debug_info:
  ea0:	680c0550 	stmdavs	ip, {r4, r6, r8, sl}
  ea4:	2a202150 	bcs	8093ec <uart_disable+0x8091dc>
  ea8:	0a035101 	beq	d52b4 <uart_disable+0xd50a4>
- eac:	290001b1 	stmdbcs	r0, {r0, r4, r5, r7, r8}
+ eac:	2900010e 	stmdbcs	r0, {r1, r2, r3, r8}
  eb0:	000000b4 	strheq	r0, [r0], -r4
  eb4:	00000ef9 	strdeq	r0, [r0], -r9
  eb8:	00000ec3 	andeq	r0, r0, r3, asr #29
@@ -3660,7 +3660,7 @@ Disassembly of section .debug_loc:
  1ec:	00a05100 	adceq	r5, r0, r0, lsl #2
  1f0:	00b40000 	adcseq	r0, r4, r0
  1f4:	00040000 	andeq	r0, r4, r0
- 1f8:	9f01b10a 	svcls	0x0001b10a
+ 1f8:	9f010e0a 	svcls	0x00010e0a
  1fc:	000000b4 	strheq	r0, [r0], -r4
  200:	000000b4 	strheq	r0, [r0], -r4
  204:	b4500001 	ldrblt	r0, [r0], #-1
@@ -3807,8 +3807,8 @@ Disassembly of section .debug_line:
  1b8:	054d062e 	strbeq	r0, [sp, #-1582]	; 0xfffff9d2
  1bc:	0501060b 	streq	r0, [r1, #-1547]	; 0xfffff9f5
  1c0:	13670605 	cmnne	r7, #5242880	; 0x500000
- 1c4:	4d062e06 	stcmi	14, cr2, [r6, #-24]	; 0xffffffe8
- 1c8:	0b056813 	bleq	15a21c <uart_disable+0x15a00c>
+ 1c4:	4c062e06 	stcmi	14, cr2, [r6], {6}
+ 1c8:	0b056814 	bleq	15a220 <uart_disable+0x15a010>
  1cc:	05050106 	streq	r0, [r5, #-262]	; 0xfffffefa
  1d0:	06134b06 	ldreq	r4, [r3], -r6, lsl #22
  1d4:	054b062e 	strbeq	r0, [fp, #-1582]	; 0xfffff9d2
