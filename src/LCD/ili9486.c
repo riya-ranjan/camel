@@ -73,6 +73,29 @@ void ili9486_set_addr_window(uint16_t x0, uint16_t y0,
     send_cmd(ILI9486_RAMWR);
 }
 
+// two buffers -- camera fills one while display reads the other
+// static uint16_t buf_a[ILI9486_WIDTH * ILI9486_HEIGHT];
+// static uint16_t buf_b[ILI9486_WIDTH * ILI9486_HEIGHT];
+
+// void video_loop(void)
+// {
+//     uint16_t *display_buf = buf_a;
+//     uint16_t *camera_buf  = buf_b;
+
+//     while (1) {
+//         // 1. get frame from camera into camera_buf
+//         camera_get_frame(camera_buf);
+
+//         // 2. display the previously captured frame
+//         ili9486_draw_image(0, 0, ILI9486_WIDTH, ILI9486_HEIGHT, display_buf);
+
+//         // 3. swap buffers
+//         uint16_t *tmp = display_buf;
+//         display_buf   = camera_buf;
+//         camera_buf    = tmp;
+//     }
+// }
+
 void ili9486_init(void)
 {
     ili9486_hal_reset(1);

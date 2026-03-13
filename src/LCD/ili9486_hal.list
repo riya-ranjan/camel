@@ -109,7 +109,7 @@ Disassembly of section .text:
     814c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
     8150:	e59f301c 	ldr	r3, [pc, #28]	; 8174 <ili9486_hal_spi_write+0x64>
     8154:	e58d3000 	str	r3, [sp]
-    8158:	e3a03072 	mov	r3, #114, 0	; 0x72
+    8158:	e3a03051 	mov	r3, #81, 0	; 0x51
     815c:	e59f2014 	ldr	r2, [pc, #20]	; 8178 <ili9486_hal_spi_write+0x68>
     8160:	e59f1014 	ldr	r1, [pc, #20]	; 817c <ili9486_hal_spi_write+0x6c>
     8164:	e59f0014 	ldr	r0, [pc, #20]	; 8180 <ili9486_hal_spi_write+0x70>
@@ -142,7 +142,7 @@ Disassembly of section .text:
     81c8:	e3a02b3e 	mov	r2, #63488	; 0xf800
     81cc:	e1a01005 	mov	r1, r5
     81d0:	e1a00004 	mov	r0, r4
-    81d4:	eb0000fd 	bl	85d0 <ili9486_draw_pixel>
+    81d4:	eb0000ff 	bl	85d8 <ili9486_draw_pixel>
     81d8:	e2844001 	add	r4, r4, #1, 0
     81dc:	e6ff4074 	uxth	r4, r4
     81e0:	e3540d05 	cmp	r4, #320	; 0x140
@@ -177,15 +177,15 @@ Disassembly of section .text:
     824c:	e92d4010 	push	{r4, lr}
     8250:	ebffff78 	bl	8038 <ili9486_hal_setup>
     8254:	e3a00000 	mov	r0, #0, 0
-    8258:	eb0000d2 	bl	85a8 <ili9486_fill_screen>
+    8258:	eb0000d4 	bl	85b0 <ili9486_fill_screen>
     825c:	e3a0201f 	mov	r2, #31, 0
     8260:	e3a01000 	mov	r1, #0, 0
     8264:	e1a00001 	mov	r0, r1
-    8268:	eb0000d8 	bl	85d0 <ili9486_draw_pixel>
+    8268:	eb0000da 	bl	85d8 <ili9486_draw_pixel>
     826c:	e3a0201f 	mov	r2, #31, 0
     8270:	e59f100c 	ldr	r1, [pc, #12]	; 8284 <notmain+0x38>
     8274:	e59f000c 	ldr	r0, [pc, #12]	; 8288 <notmain+0x3c>
-    8278:	eb0000d4 	bl	85d0 <ili9486_draw_pixel>
+    8278:	eb0000d6 	bl	85d8 <ili9486_draw_pixel>
     827c:	ebffffc0 	bl	8184 <draw_test_pattern>
     8280:	eafffffe 	b	8280 <notmain+0x34>
     8284:	000001df 	.word	0x000001df
@@ -361,140 +361,142 @@ Disassembly of section .text:
     84fc:	e3520000 	cmp	r2, #0, 0
     8500:	03a03001 	moveq	r3, #1, 0
     8504:	e3530000 	cmp	r3, #0, 0
-    8508:	1a000022 	bne	8598 <ili9486_fill_rect+0xb4>
+    8508:	1a000026 	bne	85a8 <ili9486_fill_rect+0xc4>
     850c:	e1a04002 	mov	r4, r2
     8510:	e3510e1e 	cmp	r1, #480	; 0x1e0
     8514:	33500d05 	cmpcc	r0, #320	; 0x140
-    8518:	2a00001e 	bcs	8598 <ili9486_fill_rect+0xb4>
+    8518:	2a000022 	bcs	85a8 <ili9486_fill_rect+0xc4>
     851c:	e0823000 	add	r3, r2, r0
     8520:	e3530d05 	cmp	r3, #320	; 0x140
-    8524:	82600d05 	rsbhi	r0, r0, #320	; 0x140
-    8528:	86ff4070 	uxthhi	r4, r0
+    8524:	82604d05 	rsbhi	r4, r0, #320	; 0x140
+    8528:	86ff4074 	uxthhi	r4, r4
     852c:	e0853001 	add	r3, r5, r1
     8530:	e3530e1e 	cmp	r3, #480	; 0x1e0
     8534:	82615e1e 	rsbhi	r5, r1, #480	; 0x1e0
     8538:	86ff5075 	uxthhi	r5, r5
-    853c:	e59f305c 	ldr	r3, [pc, #92]	; 85a0 <ili9486_fill_rect+0xbc>
-    8540:	e59f205c 	ldr	r2, [pc, #92]	; 85a4 <ili9486_fill_rect+0xc0>
-    8544:	e3a01000 	mov	r1, #0, 0
-    8548:	e1a00001 	mov	r0, r1
-    854c:	ebffff78 	bl	8334 <ili9486_set_addr_window>
-    8550:	e1a03426 	lsr	r3, r6, #8
-    8554:	e5cd3004 	strb	r3, [sp, #4]
-    8558:	e5cd6005 	strb	r6, [sp, #5]
-    855c:	e0050495 	mul	r5, r5, r4
-    8560:	e3a00001 	mov	r0, #1, 0
-    8564:	ebfffed4 	bl	80bc <ili9486_hal_dc>
-    8568:	e3a00000 	mov	r0, #0, 0
-    856c:	ebfffed1 	bl	80b8 <ili9486_hal_cs>
-    8570:	e3a04000 	mov	r4, #0, 0
-    8574:	ea000003 	b	8588 <ili9486_fill_rect+0xa4>
-    8578:	e3a01002 	mov	r1, #2, 0
-    857c:	e28d0004 	add	r0, sp, #4, 0
-    8580:	ebfffee2 	bl	8110 <ili9486_hal_spi_write>
-    8584:	e2844001 	add	r4, r4, #1, 0
-    8588:	e1540005 	cmp	r4, r5
-    858c:	3afffff9 	bcc	8578 <ili9486_fill_rect+0x94>
-    8590:	e3a00001 	mov	r0, #1, 0
-    8594:	ebfffec7 	bl	80b8 <ili9486_hal_cs>
-    8598:	e28dd008 	add	sp, sp, #8, 0
-    859c:	e8bd8070 	pop	{r4, r5, r6, pc}
-    85a0:	000001df 	.word	0x000001df
-    85a4:	0000013f 	.word	0x0000013f
+    853c:	e0842000 	add	r2, r4, r0
+    8540:	e6ff2072 	uxth	r2, r2
+    8544:	e0853001 	add	r3, r5, r1
+    8548:	e6ff3073 	uxth	r3, r3
+    854c:	e2433001 	sub	r3, r3, #1, 0
+    8550:	e2422001 	sub	r2, r2, #1, 0
+    8554:	e6ff3073 	uxth	r3, r3
+    8558:	e6ff2072 	uxth	r2, r2
+    855c:	ebffff74 	bl	8334 <ili9486_set_addr_window>
+    8560:	e1a03426 	lsr	r3, r6, #8
+    8564:	e5cd3004 	strb	r3, [sp, #4]
+    8568:	e5cd6005 	strb	r6, [sp, #5]
+    856c:	e0050495 	mul	r5, r5, r4
+    8570:	e3a00001 	mov	r0, #1, 0
+    8574:	ebfffed0 	bl	80bc <ili9486_hal_dc>
+    8578:	e3a00000 	mov	r0, #0, 0
+    857c:	ebfffecd 	bl	80b8 <ili9486_hal_cs>
+    8580:	e3a04000 	mov	r4, #0, 0
+    8584:	ea000003 	b	8598 <ili9486_fill_rect+0xb4>
+    8588:	e3a01002 	mov	r1, #2, 0
+    858c:	e28d0004 	add	r0, sp, #4, 0
+    8590:	ebfffede 	bl	8110 <ili9486_hal_spi_write>
+    8594:	e2844001 	add	r4, r4, #1, 0
+    8598:	e1540005 	cmp	r4, r5
+    859c:	3afffff9 	bcc	8588 <ili9486_fill_rect+0xa4>
+    85a0:	e3a00001 	mov	r0, #1, 0
+    85a4:	ebfffec3 	bl	80b8 <ili9486_hal_cs>
+    85a8:	e28dd008 	add	sp, sp, #8, 0
+    85ac:	e8bd8070 	pop	{r4, r5, r6, pc}
 
-000085a8 <ili9486_fill_screen>:
-    85a8:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
-    85ac:	e24dd00c 	sub	sp, sp, #12, 0
-    85b0:	e58d0000 	str	r0, [sp]
-    85b4:	e3a03e1e 	mov	r3, #480	; 0x1e0
-    85b8:	e3a02d05 	mov	r2, #320	; 0x140
-    85bc:	e3a01000 	mov	r1, #0, 0
-    85c0:	e1a00001 	mov	r0, r1
-    85c4:	ebffffc6 	bl	84e4 <ili9486_fill_rect>
-    85c8:	e28dd00c 	add	sp, sp, #12, 0
-    85cc:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+000085b0 <ili9486_fill_screen>:
+    85b0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+    85b4:	e24dd00c 	sub	sp, sp, #12, 0
+    85b8:	e58d0000 	str	r0, [sp]
+    85bc:	e3a03e1e 	mov	r3, #480	; 0x1e0
+    85c0:	e3a02d05 	mov	r2, #320	; 0x140
+    85c4:	e3a01000 	mov	r1, #0, 0
+    85c8:	e1a00001 	mov	r0, r1
+    85cc:	ebffffc4 	bl	84e4 <ili9486_fill_rect>
+    85d0:	e28dd00c 	add	sp, sp, #12, 0
+    85d4:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
 
-000085d0 <ili9486_draw_pixel>:
-    85d0:	e3510e1e 	cmp	r1, #480	; 0x1e0
-    85d4:	33500d05 	cmpcc	r0, #320	; 0x140
-    85d8:	212fff1e 	bxcs	lr
-    85dc:	e92d4010 	push	{r4, lr}
-    85e0:	e24dd008 	sub	sp, sp, #8, 0
-    85e4:	e1a04002 	mov	r4, r2
-    85e8:	e1a03001 	mov	r3, r1
-    85ec:	e1a02000 	mov	r2, r0
-    85f0:	ebffff4f 	bl	8334 <ili9486_set_addr_window>
-    85f4:	e1a03424 	lsr	r3, r4, #8
-    85f8:	e5cd3004 	strb	r3, [sp, #4]
-    85fc:	e5cd4005 	strb	r4, [sp, #5]
-    8600:	e3a00001 	mov	r0, #1, 0
-    8604:	ebfffeac 	bl	80bc <ili9486_hal_dc>
-    8608:	e3a00000 	mov	r0, #0, 0
-    860c:	ebfffea9 	bl	80b8 <ili9486_hal_cs>
-    8610:	e3a01002 	mov	r1, #2, 0
-    8614:	e28d0004 	add	r0, sp, #4, 0
-    8618:	ebfffebc 	bl	8110 <ili9486_hal_spi_write>
-    861c:	e3a00001 	mov	r0, #1, 0
-    8620:	ebfffea4 	bl	80b8 <ili9486_hal_cs>
-    8624:	e28dd008 	add	sp, sp, #8, 0
-    8628:	e8bd8010 	pop	{r4, pc}
+000085d8 <ili9486_draw_pixel>:
+    85d8:	e3510e1e 	cmp	r1, #480	; 0x1e0
+    85dc:	33500d05 	cmpcc	r0, #320	; 0x140
+    85e0:	212fff1e 	bxcs	lr
+    85e4:	e92d4010 	push	{r4, lr}
+    85e8:	e24dd008 	sub	sp, sp, #8, 0
+    85ec:	e1a04002 	mov	r4, r2
+    85f0:	e1a03001 	mov	r3, r1
+    85f4:	e1a02000 	mov	r2, r0
+    85f8:	ebffff4d 	bl	8334 <ili9486_set_addr_window>
+    85fc:	e1a03424 	lsr	r3, r4, #8
+    8600:	e5cd3004 	strb	r3, [sp, #4]
+    8604:	e5cd4005 	strb	r4, [sp, #5]
+    8608:	e3a00001 	mov	r0, #1, 0
+    860c:	ebfffeaa 	bl	80bc <ili9486_hal_dc>
+    8610:	e3a00000 	mov	r0, #0, 0
+    8614:	ebfffea7 	bl	80b8 <ili9486_hal_cs>
+    8618:	e3a01002 	mov	r1, #2, 0
+    861c:	e28d0004 	add	r0, sp, #4, 0
+    8620:	ebfffeba 	bl	8110 <ili9486_hal_spi_write>
+    8624:	e3a00001 	mov	r0, #1, 0
+    8628:	ebfffea2 	bl	80b8 <ili9486_hal_cs>
+    862c:	e28dd008 	add	sp, sp, #8, 0
+    8630:	e8bd8010 	pop	{r4, pc}
 
-0000862c <ili9486_draw_image>:
-    862c:	e92d4070 	push	{r4, r5, r6, lr}
-    8630:	e24dd008 	sub	sp, sp, #8, 0
-    8634:	e59d6018 	ldr	r6, [sp, #24]
-    8638:	e1a04002 	mov	r4, r2
-    863c:	e16f2f12 	clz	r2, r2
-    8640:	e1a022a2 	lsr	r2, r2, #5
-    8644:	e3560000 	cmp	r6, #0, 0
-    8648:	03a02001 	moveq	r2, #1, 0
-    864c:	e3520000 	cmp	r2, #0, 0
-    8650:	1a00002a 	bne	8700 <ili9486_draw_image+0xd4>
-    8654:	e1a05003 	mov	r5, r3
-    8658:	e3530000 	cmp	r3, #0, 0
-    865c:	0a000027 	beq	8700 <ili9486_draw_image+0xd4>
-    8660:	e3510e1e 	cmp	r1, #480	; 0x1e0
-    8664:	33500d05 	cmpcc	r0, #320	; 0x140
-    8668:	2a000024 	bcs	8700 <ili9486_draw_image+0xd4>
-    866c:	e0843000 	add	r3, r4, r0
-    8670:	e3530d05 	cmp	r3, #320	; 0x140
-    8674:	82604d05 	rsbhi	r4, r0, #320	; 0x140
-    8678:	86ff4074 	uxthhi	r4, r4
-    867c:	e0853001 	add	r3, r5, r1
-    8680:	e3530e1e 	cmp	r3, #480	; 0x1e0
-    8684:	82615e1e 	rsbhi	r5, r1, #480	; 0x1e0
-    8688:	86ff5075 	uxthhi	r5, r5
-    868c:	e0842000 	add	r2, r4, r0
-    8690:	e6ff2072 	uxth	r2, r2
-    8694:	e0853001 	add	r3, r5, r1
-    8698:	e6ff3073 	uxth	r3, r3
-    869c:	e2433001 	sub	r3, r3, #1, 0
-    86a0:	e2422001 	sub	r2, r2, #1, 0
-    86a4:	e6ff3073 	uxth	r3, r3
-    86a8:	e6ff2072 	uxth	r2, r2
-    86ac:	ebffff20 	bl	8334 <ili9486_set_addr_window>
-    86b0:	e0050495 	mul	r5, r5, r4
-    86b4:	e3a00001 	mov	r0, #1, 0
-    86b8:	ebfffe7f 	bl	80bc <ili9486_hal_dc>
-    86bc:	e3a00000 	mov	r0, #0, 0
-    86c0:	ebfffe7c 	bl	80b8 <ili9486_hal_cs>
-    86c4:	e3a04000 	mov	r4, #0, 0
-    86c8:	e1540005 	cmp	r4, r5
-    86cc:	2a000009 	bcs	86f8 <ili9486_draw_image+0xcc>
-    86d0:	e1a03084 	lsl	r3, r4, #1
-    86d4:	e19630b3 	ldrh	r3, [r6, r3]
-    86d8:	e1a02423 	lsr	r2, r3, #8
-    86dc:	e5cd2004 	strb	r2, [sp, #4]
-    86e0:	e5cd3005 	strb	r3, [sp, #5]
-    86e4:	e3a01002 	mov	r1, #2, 0
-    86e8:	e28d0004 	add	r0, sp, #4, 0
-    86ec:	ebfffe87 	bl	8110 <ili9486_hal_spi_write>
-    86f0:	e2844001 	add	r4, r4, #1, 0
-    86f4:	eafffff3 	b	86c8 <ili9486_draw_image+0x9c>
-    86f8:	e3a00001 	mov	r0, #1, 0
-    86fc:	ebfffe6d 	bl	80b8 <ili9486_hal_cs>
-    8700:	e28dd008 	add	sp, sp, #8, 0
-    8704:	e8bd8070 	pop	{r4, r5, r6, pc}
+00008634 <ili9486_draw_image>:
+    8634:	e92d4070 	push	{r4, r5, r6, lr}
+    8638:	e24dd008 	sub	sp, sp, #8, 0
+    863c:	e59d6018 	ldr	r6, [sp, #24]
+    8640:	e1a04002 	mov	r4, r2
+    8644:	e16f2f12 	clz	r2, r2
+    8648:	e1a022a2 	lsr	r2, r2, #5
+    864c:	e3560000 	cmp	r6, #0, 0
+    8650:	03a02001 	moveq	r2, #1, 0
+    8654:	e3520000 	cmp	r2, #0, 0
+    8658:	1a00002a 	bne	8708 <ili9486_draw_image+0xd4>
+    865c:	e1a05003 	mov	r5, r3
+    8660:	e3530000 	cmp	r3, #0, 0
+    8664:	0a000027 	beq	8708 <ili9486_draw_image+0xd4>
+    8668:	e3510e1e 	cmp	r1, #480	; 0x1e0
+    866c:	33500d05 	cmpcc	r0, #320	; 0x140
+    8670:	2a000024 	bcs	8708 <ili9486_draw_image+0xd4>
+    8674:	e0843000 	add	r3, r4, r0
+    8678:	e3530d05 	cmp	r3, #320	; 0x140
+    867c:	82604d05 	rsbhi	r4, r0, #320	; 0x140
+    8680:	86ff4074 	uxthhi	r4, r4
+    8684:	e0853001 	add	r3, r5, r1
+    8688:	e3530e1e 	cmp	r3, #480	; 0x1e0
+    868c:	82615e1e 	rsbhi	r5, r1, #480	; 0x1e0
+    8690:	86ff5075 	uxthhi	r5, r5
+    8694:	e0842000 	add	r2, r4, r0
+    8698:	e6ff2072 	uxth	r2, r2
+    869c:	e0853001 	add	r3, r5, r1
+    86a0:	e6ff3073 	uxth	r3, r3
+    86a4:	e2433001 	sub	r3, r3, #1, 0
+    86a8:	e2422001 	sub	r2, r2, #1, 0
+    86ac:	e6ff3073 	uxth	r3, r3
+    86b0:	e6ff2072 	uxth	r2, r2
+    86b4:	ebffff1e 	bl	8334 <ili9486_set_addr_window>
+    86b8:	e0050495 	mul	r5, r5, r4
+    86bc:	e3a00001 	mov	r0, #1, 0
+    86c0:	ebfffe7d 	bl	80bc <ili9486_hal_dc>
+    86c4:	e3a00000 	mov	r0, #0, 0
+    86c8:	ebfffe7a 	bl	80b8 <ili9486_hal_cs>
+    86cc:	e3a04000 	mov	r4, #0, 0
+    86d0:	e1540005 	cmp	r4, r5
+    86d4:	2a000009 	bcs	8700 <ili9486_draw_image+0xcc>
+    86d8:	e1a03084 	lsl	r3, r4, #1
+    86dc:	e19630b3 	ldrh	r3, [r6, r3]
+    86e0:	e1a02423 	lsr	r2, r3, #8
+    86e4:	e5cd2004 	strb	r2, [sp, #4]
+    86e8:	e5cd3005 	strb	r3, [sp, #5]
+    86ec:	e3a01002 	mov	r1, #2, 0
+    86f0:	e28d0004 	add	r0, sp, #4, 0
+    86f4:	ebfffe85 	bl	8110 <ili9486_hal_spi_write>
+    86f8:	e2844001 	add	r4, r4, #1, 0
+    86fc:	eafffff3 	b	86d0 <ili9486_draw_image+0x9c>
+    8700:	e3a00001 	mov	r0, #1, 0
+    8704:	ebfffe6b 	bl	80b8 <ili9486_hal_cs>
+    8708:	e28dd008 	add	sp, sp, #8, 0
+    870c:	e8bd8070 	pop	{r4, r5, r6, pc}
 	...
 
 00008720 <baud_divisors_set>:
